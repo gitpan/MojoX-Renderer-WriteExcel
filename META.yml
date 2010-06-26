@@ -16,6 +16,7 @@ meta-spec:
 name: MojoX-Renderer-WriteExcel
 no_index:
   directory:
+    - examples
     - inc
     - t
 requires:
@@ -23,4 +24,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/zakame/mojox-renderer-writeexcel.git
-version: 0.01
+version: 0.02
