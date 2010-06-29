@@ -5,7 +5,7 @@ use strict;
 
 use Spreadsheet::WriteExcel::Simple;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 # Fry: Why would a robot need to drink?
 # Bender: I don't need to drink. I can quit anytime I want!
@@ -13,10 +13,10 @@ sub new {
     shift;    # ignore
 
     return sub {
-        my ( $r, $c, $output ) = @_;
+        my ( $r, $c, $output, $options ) = @_;
 
         # don't let MojoX::Renderer to encode output to string
-        $r->encoding('');
+        delete $options->{encoding};
 
         my $ss      = Spreadsheet::WriteExcel::Simple->new;
         my $heading = $c->stash->{heading};

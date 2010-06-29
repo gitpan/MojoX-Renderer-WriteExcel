@@ -1,18 +1,52 @@
-use inc::Module::Install;
 
-name     'MojoX-Renderer-WriteExcel';
-all_from 'lib/MojoX/Renderer/WriteExcel.pm';
-license  'perl';
+use strict;
+use warnings;
 
-no_index directory => 'examples';
 
-build_requires 'Test::More';
 
-resources repository => 'git://github.com/zakame/mojox-renderer-writeexcel.git';
+use ExtUtils::MakeMaker 6.31;
 
-requires 'Spreadsheet::WriteExcel::Simple';
 
-auto_install;
 
-WriteAll;
+my %WriteMakefileArgs = (
+  'ABSTRACT' => 'emit Excel spreadsheets from Mojo',
+  'AUTHOR' => 'Zak B. Elep <zakame@cpan.org>',
+  'BUILD_REQUIRES' => {},
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.31'
+  },
+  'DISTNAME' => 'MojoX-Renderer-WriteExcel',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'MojoX::Renderer::WriteExcel',
+  'PREREQ_PM' => {
+    'Spreadsheet::WriteExcel::Simple' => '0',
+    'Test::More' => '0'
+  },
+  'VERSION' => '0.03',
+  'test' => {
+    'TESTS' => 't/*.t'
+  }
+);
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
 
