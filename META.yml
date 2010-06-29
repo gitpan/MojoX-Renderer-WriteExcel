@@ -2,7 +2,9 @@
 abstract: 'emit Excel spreadsheets from Mojo'
 author:
   - 'Zak B. Elep <zakame@cpan.org>'
-build_requires: {}
+build_requires:
+  Test::Mojo: 0
+  Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
@@ -14,7 +16,6 @@ meta-spec:
 name: MojoX-Renderer-WriteExcel
 requires:
   Spreadsheet::WriteExcel::Simple: 0
-  Test::More: 0
 resources:
   repository: git://github.com/zakame/mojox-renderer-writeexcel.git
-version: 0.03
+version: 0.031

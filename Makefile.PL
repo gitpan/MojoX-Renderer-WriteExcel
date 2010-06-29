@@ -11,7 +11,10 @@ use ExtUtils::MakeMaker 6.31;
 my %WriteMakefileArgs = (
   'ABSTRACT' => 'emit Excel spreadsheets from Mojo',
   'AUTHOR' => 'Zak B. Elep <zakame@cpan.org>',
-  'BUILD_REQUIRES' => {},
+  'BUILD_REQUIRES' => {
+    'Test::Mojo' => '0',
+    'Test::More' => '0'
+  },
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.31'
   },
@@ -20,10 +23,9 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'MojoX::Renderer::WriteExcel',
   'PREREQ_PM' => {
-    'Spreadsheet::WriteExcel::Simple' => '0',
-    'Test::More' => '0'
+    'Spreadsheet::WriteExcel::Simple' => '0'
   },
-  'VERSION' => '0.03',
+  'VERSION' => '0.031',
   'test' => {
     'TESTS' => 't/*.t'
   }
