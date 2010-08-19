@@ -10,7 +10,6 @@ lib/Mojolicious/Plugin/WriteExcel.pm
 t/00-load.t
 t/DemoXls
 t/author-critic.t
-t/boilerplate.t
 t/manifest.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
