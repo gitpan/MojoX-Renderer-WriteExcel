@@ -5,7 +5,7 @@ use strict;
 
 use Spreadsheet::WriteExcel::Simple;
 
-our $VERSION = '0.03';
+our $VERSION = '0.4';
 
 # Fry: Why would a robot need to drink?
 # Bender: I don't need to drink. I can quit anytime I want!
@@ -18,12 +18,22 @@ sub new {
         # don't let MojoX::Renderer to encode output to string
         delete $options->{encoding};
 
-        my $ss      = Spreadsheet::WriteExcel::Simple->new;
-        my $heading = $c->stash->{heading};
-        my $result  = $c->stash->{result};
+        my $ss       = Spreadsheet::WriteExcel::Simple->new;
+        my $heading  = $c->stash->{heading};
+        my $result   = $c->stash->{result};
+        my $settings = $c->stash->{settings};
 
         if ( ref $heading ) {
             $ss->write_bold_row($heading);
+        }
+
+        if ( ref $settings ) {
+            $c->render_exception("invalid column width")
+              unless defined $settings->{column_width};
+            for my $col ( keys %{ $settings->{column_width} } ) {
+                $ss->sheet->set_column( $col,
+                    $settings->{column_width}->{$col} );
+            }
         }
 
         foreach my $data (@$result) {
@@ -62,6 +72,13 @@ will also write headings in bold type for the columns in the
 spreadsheet.
 
 C<heading> is an arrayref, while C<result> is an array of arrayrefs.
+
+Optionally, a C<settings> parameter can be provided to set additional
+attributes in the Excel spreadsheet.  Currently 'column_width' is the
+only working attribute.  C<settings> is a hashref.  Column widths
+could be set by passing the settings to render such as:
+
+   settings => {column_width => {'A:A' => 10, 'B:B' => 25, 'C:D' => 40}}
 
 =head1 METHODS
 

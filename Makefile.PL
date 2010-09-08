@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
   'PREREQ_PM' => {
     'Spreadsheet::WriteExcel::Simple' => '0'
   },
-  'VERSION' => '0.032',
+  'VERSION' => '0.4',
   'test' => {
     'TESTS' => 't/*.t'
   }
