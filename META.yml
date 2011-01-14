@@ -3,19 +3,19 @@ abstract: 'emit Excel spreadsheets from Mojo'
 author:
   - 'Zak B. Elep <zakame@cpan.org>'
 build_requires:
-  Test::Mojo: 0
   Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.31
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.102340, CPAN::Meta::Converter version 2.102400'
+generated_by: 'Dist::Zilla version 4.200000, CPAN::Meta::Converter version 2.102400'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: MojoX-Renderer-WriteExcel
 requires:
+  Mojolicious: 0.999930
   Spreadsheet::WriteExcel::Simple: 0
 resources:
   repository: git://github.com/zakame/mojox-renderer-writeexcel.git
-version: 0.41
+version: 1.0

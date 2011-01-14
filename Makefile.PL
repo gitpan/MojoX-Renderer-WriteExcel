@@ -12,7 +12,6 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'emit Excel spreadsheets from Mojo',
   'AUTHOR' => 'Zak B. Elep <zakame@cpan.org>',
   'BUILD_REQUIRES' => {
-    'Test::Mojo' => '0',
     'Test::More' => '0'
   },
   'CONFIGURE_REQUIRES' => {
@@ -23,9 +22,10 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'MojoX::Renderer::WriteExcel',
   'PREREQ_PM' => {
+    'Mojolicious' => '0.999930',
     'Spreadsheet::WriteExcel::Simple' => '0'
   },
-  'VERSION' => '0.41',
+  'VERSION' => '1.0',
   'test' => {
     'TESTS' => 't/*.t'
   }
