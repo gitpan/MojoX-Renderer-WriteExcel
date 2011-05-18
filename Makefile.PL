@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
     'Mojolicious' => '0.999930',
     'Spreadsheet::WriteExcel::Simple' => '0'
   },
-  'VERSION' => '1.10',
+  'VERSION' => '1.11',
   'test' => {
     'TESTS' => 't/*.t'
   }

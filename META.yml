@@ -18,4 +18,4 @@ requires:
   Spreadsheet::WriteExcel::Simple: 0
 resources:
   repository: git://github.com/zakame/mojox-renderer-writeexcel.git
-version: 1.10
+version: 1.11
