@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -15,7 +15,7 @@ my %WriteMakefileArgs = (
     'Test::More' => '0'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'MojoX-Renderer-WriteExcel',
   'EXE_FILES' => [],
@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
     'Mojolicious' => '0.999930',
     'Spreadsheet::WriteExcel::Simple' => '0'
   },
-  'VERSION' => '1.0',
+  'VERSION' => '1.10',
   'test' => {
     'TESTS' => 't/*.t'
   }

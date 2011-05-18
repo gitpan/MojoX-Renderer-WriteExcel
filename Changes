@@ -1,5 +1,7 @@
 Revision history for MojoX-Renderer-WriteExcel
 
+1.10    2011-05-18
+
 1.0     2011-01-14
         Depend on Mojo 0.999930
         Add extra tests

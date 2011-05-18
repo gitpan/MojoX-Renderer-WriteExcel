@@ -24,49 +24,45 @@ app->log->level('fatal');
 plugin 'write_excel';
 
 get '/demo.xls' => sub {
-    shift->render(
-        handler => 'xls',
-        heading => [qw(Firstname Middle LastName)],
-        result  => [
-            [qw(Zak B Elep)], [qw(Joel T Tanangonan)],
-            [qw(Jerome S Gotangco)],
-        ],
-    );
+  shift->render(
+    handler => 'xls',
+    heading => [qw(Firstname Middle LastName)],
+    result =>
+      [[qw(Zak B Elep)], [qw(Joel T Tanangonan)], [qw(Jerome S Gotangco)],],
+  );
 };
 
 get '/demo_without_heading.xls' => sub {
-    shift->render(
-        handler => 'xls',
-        result =>
-          [ [qw(foo bar baz)], [qw(lol wut bbq)], [qw(kick ass module)], ],
-    );
+  shift->render(
+    handler => 'xls',
+    result  => [[qw(foo bar baz)], [qw(lol wut bbq)], [qw(kick ass module)],],
+  );
 };
 
 get '/demo_with_column_width.xls' => sub {
-    shift->render(
-        handler => 'xls',
-        result  => [],
-        settings =>
-          { column_width => { 'A:A' => 10, 'B:B' => 25, 'C:D' => 40 } },
-    );
+  shift->render(
+    handler  => 'xls',
+    result   => [],
+    settings => {column_width => {'A:A' => 10, 'B:B' => 25, 'C:D' => 40}},
+  );
 };
 
 get '/demo_with_broken_column_width_1.xls' => sub {
-    shift->render(
-        handler  => 'xls',
-        result   => [],
-        settings => { column_width => undef },
-    );
+  shift->render(
+    handler  => 'xls',
+    result   => [],
+    settings => {column_width => undef},
+  );
 };
 
 get '/demo_with_app_helper.xls' => sub {
-    shift->render_xls( result =>
-          [ [qw(foo bar baz)], [qw(lol wut bbq)], [qw(kick ass module)], ], );
+  shift->render_xls(
+    result => [[qw(foo bar baz)], [qw(lol wut bbq)], [qw(kick ass module)],],
+  );
 };
 
 # Test
-my $client = app->client;
-my $t      = Test::Mojo->new;
+my $t = Test::Mojo->new;
 
 $t->get_ok('/demo.xls')->status_is(200)
   ->content_type_is('application/vnd.ms-excel');
